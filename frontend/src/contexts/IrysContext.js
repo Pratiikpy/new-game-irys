@@ -74,7 +74,7 @@ export const IrysProvider = ({ children }) => {
       
       // Update balance
       const newBalance = await irysUploader.getLoadedBalance();
-      setBalance(irysUploader.utils.fromAtomic(newBalance));
+      setBalance(irysUploader.utils.fromAtomic(newBalance).toString());
       
       return { success: true, funded };
     } catch (error) {
