@@ -21,6 +21,7 @@ export const IrysProvider = ({ children }) => {
   const [balance, setBalance] = useState("0");
   const [isConnected, setIsConnected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState("");
 
   // Initialize Irys uploader
   const initIrys = async () => {
