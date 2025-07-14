@@ -133,7 +133,7 @@ const WalletConnection = ({ onConnectionChange, isConnected }) => {
               <h3 className="text-lg font-semibold text-white">
                 {formatAddress(walletAddress)}
               </h3>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 mb-2">
                 <Badge variant="secondary" className="text-xs">
                   Sepolia Testnet
                 </Badge>
@@ -141,6 +141,51 @@ const WalletConnection = ({ onConnectionChange, isConnected }) => {
                   <CheckCircle className="w-3 h-3 mr-1 text-green-400" />
                   Connected
                 </Badge>
+              </div>
+              
+              {/* Username Section */}
+              <div className="flex items-center space-x-2">
+                <User className="w-4 h-4 text-purple-400" />
+                {isEditingUsername ? (
+                  <div className="flex items-center space-x-2">
+                    <Input
+                      value={tempUsername}
+                      onChange={(e) => setTempUsername(e.target.value)}
+                      placeholder="Enter username"
+                      className="h-6 text-xs w-24"
+                      maxLength={20}
+                    />
+                    <Button
+                      onClick={handleUsernameSave}
+                      size="sm"
+                      className="h-6 w-6 p-0 bg-green-600 hover:bg-green-700"
+                    >
+                      <Check className="w-3 h-3" />
+                    </Button>
+                    <Button
+                      onClick={handleUsernameCancel}
+                      size="sm"
+                      variant="outline"
+                      className="h-6 w-6 p-0 border-red-500/50 text-red-400 hover:bg-red-500/10"
+                    >
+                      <X className="w-3 h-3" />
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="flex items-center space-x-2">
+                    <span className="text-sm text-gray-300">
+                      {username || "Anonymous"}
+                    </span>
+                    <Button
+                      onClick={handleUsernameEdit}
+                      size="sm"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 text-purple-400 hover:bg-purple-500/10"
+                    >
+                      <Edit3 className="w-3 h-3" />
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
