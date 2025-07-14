@@ -23,7 +23,7 @@ module.exports = {
         "util": require.resolve("util"),
         "path": require.resolve("path-browserify"),
         "os": require.resolve("os-browserify"),
-        "process": require.resolve("process/browser"),
+        "process": require.resolve("process"),
         "vm": false,
         "fs": false,
         "net": false,
