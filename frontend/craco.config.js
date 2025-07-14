@@ -1,5 +1,6 @@
 // Load configuration from environment or config file
 const path = require('path');
+const webpack = require('webpack');
 
 // Environment variable overrides
 const config = {
@@ -12,6 +13,37 @@ module.exports = {
       '@': path.resolve(__dirname, 'src'),
     },
     configure: (webpackConfig) => {
+      
+      // Add polyfills for Node.js modules
+      webpackConfig.resolve.fallback = {
+        ...webpackConfig.resolve.fallback,
+        "crypto": require.resolve("crypto-browserify"),
+        "stream": require.resolve("stream-browserify"),
+        "buffer": require.resolve("buffer"),
+        "util": require.resolve("util"),
+        "path": require.resolve("path-browserify"),
+        "os": require.resolve("os-browserify"),
+        "process": require.resolve("process/browser"),
+        "vm": false,
+        "fs": false,
+        "net": false,
+        "tls": false,
+        "child_process": false,
+        "zlib": false,
+        "assert": false,
+        "constants": false,
+        "querystring": false,
+        "url": false,
+        "http": false,
+        "https": false
+      };
+
+      webpackConfig.plugins.push(
+        new webpack.ProvidePlugin({
+          process: 'process/browser',
+          Buffer: ['buffer', 'Buffer'],
+        })
+      );
       
       // Disable hot reload completely if environment variable is set
       if (config.disableHotReload) {
