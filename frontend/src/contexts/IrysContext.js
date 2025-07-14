@@ -49,7 +49,7 @@ export const IrysProvider = ({ children }) => {
       
       // Get balance
       const loadedBalance = await uploader.getLoadedBalance();
-      setBalance(uploader.utils.fromAtomic(loadedBalance));
+      setBalance(uploader.utils.fromAtomic(loadedBalance).toString());
       
       console.log("Irys initialized successfully");
       return uploader;
