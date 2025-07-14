@@ -23,6 +23,25 @@ const WalletConnection = ({ onConnectionChange, isConnected }) => {
   const [isEditingUsername, setIsEditingUsername] = useState(false);
   const [tempUsername, setTempUsername] = useState("");
 
+  const handleUsernameEdit = () => {
+    setTempUsername(username);
+    setIsEditingUsername(true);
+  };
+
+  const handleUsernameSave = () => {
+    setUsername(tempUsername);
+    setIsEditingUsername(false);
+    toast({
+      title: "Username Updated!",
+      description: "Your username has been saved",
+    });
+  };
+
+  const handleUsernameCancel = () => {
+    setTempUsername("");
+    setIsEditingUsername(false);
+  };
+
   useEffect(() => {
     onConnectionChange(!!walletAddress);
   }, [walletAddress, onConnectionChange]);
