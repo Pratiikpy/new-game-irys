@@ -134,6 +134,7 @@ export const IrysProvider = ({ children }) => {
             return {
               id: result.id,
               wallet: scoreData.wallet,
+              username: scoreData.username || "Anonymous",
               score: scoreData.score,
               timestamp: scoreData.timestamp
             };
