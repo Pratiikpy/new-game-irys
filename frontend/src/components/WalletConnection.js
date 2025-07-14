@@ -3,7 +3,8 @@ import { useIrys } from "../contexts/IrysContext";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { Wallet, Zap, AlertCircle, CheckCircle } from "lucide-react";
+import { Input } from "./ui/input";
+import { Wallet, Zap, AlertCircle, CheckCircle, User, Edit3, Check, X } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
 
 const WalletConnection = ({ onConnectionChange, isConnected }) => {
@@ -11,12 +12,16 @@ const WalletConnection = ({ onConnectionChange, isConnected }) => {
     walletAddress, 
     balance, 
     isLoading, 
+    username,
+    setUsername,
     initIrys, 
     fundAccount,
     disconnect 
   } = useIrys();
   const { toast } = useToast();
   const [isFunding, setIsFunding] = useState(false);
+  const [isEditingUsername, setIsEditingUsername] = useState(false);
+  const [tempUsername, setTempUsername] = useState("");
 
   useEffect(() => {
     onConnectionChange(!!walletAddress);
