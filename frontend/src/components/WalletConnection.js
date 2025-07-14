@@ -203,7 +203,7 @@ const WalletConnection = ({ onConnectionChange, isConnected }) => {
           <div className="flex items-center space-x-2">
             <Zap className="w-5 h-5 text-yellow-400" />
             <span className="text-white font-medium">Irys Balance:</span>
-            <span className="text-purple-400 font-bold">{balance} ETH</span>
+            <span className="text-purple-400 font-bold">{parseFloat(balance).toFixed(4)} ETH</span>
           </div>
           
           {!hasBalance && (
