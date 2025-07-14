@@ -121,9 +121,14 @@ const Leaderboard = () => {
                 <div className="flex items-center space-x-3">
                   {getRankIcon(index + 1)}
                   <div>
-                    <p className="text-white font-medium">
-                      {formatAddress(score.wallet)}
-                    </p>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-white font-medium">
+                        {score.username || "Anonymous"}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        ({formatAddress(score.wallet)})
+                      </span>
+                    </div>
                     <p className="text-xs text-gray-400">
                       {formatDate(score.timestamp)}
                     </p>
