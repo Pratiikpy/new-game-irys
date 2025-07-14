@@ -92,6 +92,7 @@ export const IrysProvider = ({ children }) => {
     try {
       const scoreData = {
         wallet: walletAddress,
+        username: username || "Anonymous",
         score: score,
         timestamp: Date.now(),
         game: "PixelInvaders"
@@ -100,6 +101,7 @@ export const IrysProvider = ({ children }) => {
       const tags = [
         { name: "application-id", value: "PixelInvaders" },
         { name: "wallet", value: walletAddress },
+        { name: "username", value: username || "Anonymous" },
         { name: "score", value: score.toString() },
         { name: "Content-Type", value: "application/json" }
       ];
