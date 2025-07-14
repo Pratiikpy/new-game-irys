@@ -162,6 +162,7 @@ export const IrysProvider = ({ children }) => {
     setWalletAddress("");
     setBalance("0");
     setIsConnected(false);
+    setUsername("");
   };
 
   const value = {
@@ -170,6 +171,8 @@ export const IrysProvider = ({ children }) => {
     balance,
     isConnected,
     isLoading,
+    username,
+    setUsername,
     initIrys,
     fundAccount,
     uploadScore,
